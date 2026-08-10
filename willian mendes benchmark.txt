@@ -1,0 +1,103 @@
+para fazer esse primeiro benchmark considerei avaliar a compra dos produtos desde a inclusão no carrinho ate quando o pedido é confirmado após pagamento para verificar se o sistema é capaz de processar as operações de compra sem perda de informações.
+
+para o Primeiro Benchmark vamos considerar as seguintes operações dos usuários:
+
+-adicionar produto ao carrinho
+-alterar quantidade
+-remover produto
+-consultar subtotal
+-aplicar cupom
+-calcular frete
+-informar endereço
+-selecionar forma de pagamento
+-finalizar pedido
+-realizar pagamento
+-consultar confirmação do pedido.
+
+as métricas são as metas que vamos estipular para ter uma base de quanto tempo cada operação levaria---
+
+adicionar produto ao carrinho	< 200 ms
+atualizar carrinho	< 200 ms
+calculo do frete	< 500 ms
+checkout	< 1 segundo
+processamento do pagamento	< 2 segundos
+taxa de pedidos concluídos	> 99%
+pedidos duplicados	0
+pedidos perdidos	0
+taxa de erro	< 1%
+
+em um resultado teórico vamos considerar os seguintes valores:
+
+operações	       resultados	metas
+adicionar produto	120 ms	       < 200 ms	
+atualizar carrinho	145 ms	       < 200 ms	
+calcular frete	        320 ms	       < 500 ms	
+checkout	        680 ms	       < 1 s	
+pagamento	        1,4 s	       < 2 s	
+pedidos concluídos	99,4%	       > 99%	
+pedidos duplicados	0	         0	
+pedidos perdidos	0	         0	
+taxa de erro	        0,6%	       < 1%
+
+aqui os resultados que consideramos teoricamente apresenta um desempenho adequado para cada uma das operações, com isso todos os resultados ficando dentro da meta (tempo de operação) que colocamos para cada uma.
+
+
+para o segundo benchmark quis considerar basicamente o fluxo logistico que seria desde quando o produto é confirmado até a entrega.
+
+as etapas que vamos avaliar são:
+
+-confirmação do pedido
+-separação do pedido
+-conferencia do pedido
+-expedição dos produtos
+-transporte 
+-entrega ao cliente
+
+as metas que vamos usar são hipoteticas como se funcionasse no dia da compra receba seu produto em até duas horas após a confirmação do pedido( para um supermecado pequeno claro)
+
+operações	             metas
+confirmação do pedido	  < 1 minuto
+inicio da separação	  < 15 minutos
+tempo de separação	  < 30 minutos
+conferência	          < 10 minutos
+expedição	          < 10 minutos
+transporte	          < 60 minutos
+tempo total de entrega	  < 2 horas
+entregas dentro do prazo  > 95%
+produtos faltantes	  < 2%
+produtos substituídos	  < 5%
+pedidos cancelados	  < 1%
+
+
+agora em um pedido teorico que seria o resultado das operações vamos estipular os seguintes tempos para comparar com as metas que colocamos: 
+
+operações	      meta	     resultado	
+confirmação	     < 1 min	      20 s	
+inicio da separação  < 15 min         8 min	
+separação	     < 30 min	      22 min	
+conferência	     < 10 min	      6 min	
+expedição	     < 10 min	      7 min	
+transporte	     < 60 min	      48 min	
+entrega total	     < 2 h	      1h35	
+entregas no prazo    > 95%	      97,2%	
+produtos faltantes   < 2%	      1,1%	
+substituições	     < 5%	      3,2%	
+cancelamentos	     < 1%	      0,5%	
+
+
+após comparar e fazer a analise das metas que estabelecemos e do cenario teorico aonde os tempos de operações foram os que estão colocados acima, conseguimos ver os resultados que indicam que o processo logistico atende corretamente todas as metas que utilizamos para fazer o benchmark
+desde todo começo da operação tudo se encontra dentro dos tempos estabelecidos e são cumpridos corretamente, vale ressaltar que os tempos são hipoteticos, se a demanda do supermercado online aumentar todo processo logistico e de operação online iria aumentar podendo sobrecarregar, então
+vale considerar alguns pontos como nas vendas online balanceadores de carga para suportar todas requisições e compra para uma alta demanda por exemplo, e um processo logistico melhorado para atender a alta demanda e não sofrer sobrecarga.
+se considerarmos valores reais de vendas e processo logistico devemos utilizar algumas ferramentas para implementação dos benchmarks como por exemplo 
+
+Apache JMeter -> Simulação de usuários e requisições
+Prometheus    -> Coleta de métricas
+Grafana	      -> Dashboards e visualização
+Docker 	      -> Containerização
+Nginx	      -> Servidor web/proxy
+MySQL	      -> Banco de dados
+
+a analise conjunta permite identificar possíveis gargalos tanto na aplicação quanto na operação logística, dessa maneira o benchmark pode servir como base para decisões relacionadas à infraestrutura, otimização do sistema e melhoria dos processos de entrega.
+
+
+
